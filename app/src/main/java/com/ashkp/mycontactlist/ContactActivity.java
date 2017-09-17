@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -97,6 +98,14 @@ public class ContactActivity extends AppCompatActivity implements DatePickerDial
 
         if(enabled) {
             editName.requestFocus();
+        }
+
+        if (enabled) {
+            editName.requestFocus();
+        }
+        else {
+            ScrollView s = (ScrollView) findViewById(R.id.scrollView);
+            s.clearFocus();
         }
     }
 
