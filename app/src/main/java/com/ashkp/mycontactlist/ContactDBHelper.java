@@ -15,7 +15,7 @@ public class ContactDBHelper extends SQLiteOpenHelper{
                     + "contactname text not null, streetaddress text, "
                     + "city text, state text, zipcode text, "
                     + "phonenumber text, cellnumber text, "
-                    + "email text, birthday text";
+                    + "email text, birthday text, bestFriendForever int";
 
     public ContactDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -32,6 +32,12 @@ public class ContactDBHelper extends SQLiteOpenHelper{
                         + newVersion + ", which will destroy all the old data...");
         db.execSQL("DROP TABLE IF EXISTS contact");
         onCreate(db);
+        try{
+            db.execSQL("ALTER TABLE contact ADD COLUMN bestFriendForever int");
+        }
+        catch (Exception e){
+            //do nothing
+        }
     }
 
 }
