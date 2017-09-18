@@ -3,36 +3,37 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <DatePicker
+        android:id="@+id/birthdayPicker"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/birthdayPicker"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
         android:layout_centerHorizontal="true" />
 
     <LinearLayout
-        android:id="@+id/buttonLayout"
-        android:orientation="horizontal"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        style="?android:attr/borderlessButtonStyle">
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
 
         <Button
-            android:text="Cancel"
+            android:id="@+id/buttonCancel"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/dialog_button_color"
-            android:id="@+id/buttonCancel"
-            style="?android:attr/borderlessButtonStyle" />
+            android:text="Cancel"
+            android:textColor="@color/dialog_button_color" />
 
         <Button
+            android:id="@+id/buttonSelect"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select"
             android:textColor="@color/dialog_button_color"
-            android:id="@+id/buttonSelect"
-            style="?android:attr/borderlessButtonStyle" />
-    </LinearLayout>
 
+            />
+    </LinearLayout>
 </RelativeLayout>

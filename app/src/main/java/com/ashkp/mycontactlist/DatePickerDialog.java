@@ -1,53 +1,45 @@
 package com.ashkp.mycontactlist;
 
-import android.icu.util.Calendar;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 
-
-/**
- * Created by ashkp on 9/5/2017.
- */
+import java.util.Calendar;
 
 public class DatePickerDialog extends DialogFragment {
-
     public interface SaveDateListener {
-        void didFinishDatePickerDialog(Calendar selectedTime);
+        void didFinishDateDialog(Calendar selectedTime);
     }
 
     public DatePickerDialog() {
-        //Empty constructor requiredd for DialogFragment
+        //Empty constructor required for DialogFragment
     }
 
-    @Override
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.select_date, container);
 
         getDialog().setTitle("Select Date");
 
-        final DatePicker dp = (DatePicker) view.findViewById(R.id.birthdayPicker);
+        final DatePicker dp = (DatePicker)view.findViewById(R.id.birthdayPicker);
 
         Button saveButton = (Button) view.findViewById(R.id.buttonSelect);
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
+        saveButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 Calendar selectedTime = Calendar.getInstance();
-                selectedTime.set(dp.getYear(), dp.getMonth(), dp.getDayOfMonth());
+                selectedTime.set(dp.getYear(), dp.getMonth(),dp.getDayOfMonth());
                 saveItem(selectedTime);
             }
         });
-
         Button cancelButton = (Button) view.findViewById(R.id.buttonCancel);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
+        cancelButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 getDialog().dismiss();
@@ -56,11 +48,10 @@ public class DatePickerDialog extends DialogFragment {
         return view;
     }
 
-    private void saveItem (Calendar selectedTime) {
+    private void saveItem(Calendar selectedTime) {
         SaveDateListener activity = (SaveDateListener) getActivity();
 
-        activity.didFinishDatePickerDialog(selectedTime);
+        activity.didFinishDateDialog(selectedTime);
         getDialog().dismiss();
     }
-
 }
