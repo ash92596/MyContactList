@@ -3,6 +3,7 @@ package com.ashkp.mycontactlist;
 import java.util.Calendar;
 
 public class Contact {
+
     private int contactID;
     private String contactName;
     private String streetAddress;
@@ -18,6 +19,7 @@ public class Contact {
         contactID = -1;
         birthday = Calendar.getInstance();
     }
+
     public int getContactID() {
         return contactID;
     }
@@ -39,13 +41,13 @@ public class Contact {
     public String getStreetAddress() {
         return streetAddress;
     }
-    public void setStreetAddress(String s){
+    public void setStreetAddress(String s) {
         streetAddress = s;
     }
     public String getCity() {
         return city;
     }
-    public void setCity(String s){
+    public void setCity(String s) {
         city = s;
     }
     public String getState() {
@@ -72,12 +74,11 @@ public class Contact {
     public String getCellNumber() {
         return cellNumber;
     }
-    public void seteMail(String s) {
+    public void setEMail(String s) {
         eMail = s;
     }
-    public String geteMail() {
+    public String getEMail() {
         return eMail;
     }
-
 
 }

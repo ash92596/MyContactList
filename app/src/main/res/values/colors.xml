@@ -10,4 +10,6 @@
     <color name="settings_background_white">#ffffff</color>
     <color name="settings_background_blue">#a7f4ff</color>
     <color name="settings_background_pink">#f979c0</color>
+    <color name="system_red">#ff0008</color>
+    <color name="system_transparent">#00f979c0</color>
 </resources>

@@ -12,29 +12,29 @@ import android.widget.DatePicker;
 import java.util.Calendar;
 
 public class DatePickerDialog extends DialogFragment {
+
     public interface SaveDateListener {
-        void didFinishDateDialog(Calendar selectedTime);
+        void didFinishDatePickerDialog(Calendar selectedTime);
     }
 
     public DatePickerDialog() {
-        //Empty constructor required for DialogFragment
+        // Empty constructor required for DialogFragment
     }
 
-
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.select_date, container);
 
         getDialog().setTitle("Select Date");
 
-        final DatePicker dp = (DatePicker)view.findViewById(R.id.birthdayPicker);
+        final DatePicker dp = (DatePicker) view.findViewById(R.id.birthdayPicker);
 
         Button saveButton = (Button) view.findViewById(R.id.buttonSelect);
         saveButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 Calendar selectedTime = Calendar.getInstance();
-                selectedTime.set(dp.getYear(), dp.getMonth(),dp.getDayOfMonth());
+                selectedTime.set(dp.getYear(), dp.getMonth(), dp.getDayOfMonth());
                 saveItem(selectedTime);
             }
         });
@@ -50,8 +50,7 @@ public class DatePickerDialog extends DialogFragment {
 
     private void saveItem(Calendar selectedTime) {
         SaveDateListener activity = (SaveDateListener) getActivity();
-
-        activity.didFinishDateDialog(selectedTime);
+        activity.didFinishDatePickerDialog(selectedTime);
         getDialog().dismiss();
     }
 }
