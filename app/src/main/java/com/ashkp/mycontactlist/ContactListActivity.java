@@ -71,8 +71,6 @@ public class ContactListActivity extends ListActivity {
             startActivity(intent);
         }
 
-
-
     }
     private void initListButton() {
         ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonList);

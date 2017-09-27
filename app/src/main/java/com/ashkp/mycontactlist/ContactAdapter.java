@@ -1,6 +1,7 @@
 package com.ashkp.mycontactlist;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
-/**
- * Created by Michael Eierman on 11/14/2016.
- */
 
 public class ContactAdapter extends ArrayAdapter<Contact> {
 
@@ -39,9 +36,23 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
 
             TextView contactName = (TextView) v.findViewById(R.id.textContactName);
             TextView contactNumber = (TextView) v.findViewById(R.id.textPhoneNumber);
+            TextView contactCellNumber = (TextView) v.findViewById(R.id.textCell);
+            TextView contactAddress = (TextView) v.findViewById(R.id.textAddress);
+            TextView contactCityStateZip = (TextView) v.findViewById(R.id.textCityStateZip);
             Button b = (Button) v.findViewById(R.id.buttonDeleteContact);
             contactName.setText(contact.getContactName());
-            contactNumber.setText(contact.getPhoneNumber());
+            contactNumber.setText(String.format("Home: %s", contact.getPhoneNumber()));
+            contactCellNumber.setText(String.format("Cell: %s", contact.getCellNumber()));
+            contactAddress.setText(contact.getStreetAddress());
+
+            if(position%2 == 0){
+                contactName.setTextColor(Color.RED);
+            }
+            else{
+                contactName.setTextColor(Color.BLUE);
+            }
+
+            contactCityStateZip.setText(String.format("%s, %s, %s",contact.getCity(),contact.getState(), contact.getZipCode()));
             b.setVisibility(View.INVISIBLE);
         }
         catch (Exception e) {
@@ -54,7 +65,7 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
     public void showDelete(final int position, final View convertView,final Context context, final Contact contact) {
         View v = convertView;
         final Button b = (Button) v.findViewById(R.id.buttonDeleteContact);
-        //2
+
         if (b.getVisibility()==View.INVISIBLE) {
             b.setVisibility(View.VISIBLE);
             b.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +81,7 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
             hideDelete(position, convertView, context);
         }
     }
-    //3
+
     private void deleteOption(int contactToDelete, Context context) {
         ContactDataSource db = new ContactDataSource(context);
         try {
@@ -83,7 +94,7 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
         }
         this.notifyDataSetChanged();
     }
-    //4
+
     public void hideDelete(int position, View convertView, Context context) {
         View v = convertView;
         final Button b = (Button) v.findViewById(R.id.buttonDeleteContact);

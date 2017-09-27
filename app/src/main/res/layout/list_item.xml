@@ -17,7 +17,7 @@
         android:id="@+id/textContactName" />
 
     <TextView
-        android:text="Phone Number"
+        android:text="Street Address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -25,7 +25,40 @@
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
         android:layout_below="@+id/textContactName"
+        android:id="@+id/textAddress" />
+
+    <TextView
+        android:text="City, State, Zip "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_below="@+id/textAddress"
+        android:id="@+id/textCityStateZip" />
+
+    <TextView
+        android:text="Phone Number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_below="@+id/textCityStateZip"
         android:id="@+id/textPhoneNumber" />
+
+    <TextView
+        android:text="Cell Number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_below="@+id/textPhoneNumber"
+        android:id="@+id/textCell" />
 
     <Button
         android:text="Delete"
