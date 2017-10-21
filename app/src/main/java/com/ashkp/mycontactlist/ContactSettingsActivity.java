@@ -90,6 +90,8 @@ public class ContactSettingsActivity extends AppCompatActivity {
                 Context.MODE_PRIVATE).getString("sortfield","contactname");
         String sortOrder = getSharedPreferences("MyContactListPreferences",
                 Context.MODE_PRIVATE).getString("sortorder","ASC");
+        String chooseBackgroundColor = getSharedPreferences("MyContactListPreferences",
+                Context.MODE_PRIVATE).getString("background","WHITE");
 
         RadioButton rbName = (RadioButton) findViewById(R.id.radioName);
         RadioButton rbCity = (RadioButton) findViewById(R.id.radioCity);
@@ -104,6 +106,19 @@ public class ContactSettingsActivity extends AppCompatActivity {
             rbBirthDay.setChecked(true);
         }
 
+        RadioButton rbWhite = (RadioButton) findViewById(R.id.radioWhiteBackground);
+        RadioButton rbBlue = (RadioButton) findViewById(R.id.radioBlueBackground);
+        RadioButton rbPink = (RadioButton) findViewById(R.id.radioPinkBackground);
+        if (chooseBackgroundColor.equalsIgnoreCase("WHITE")) {
+            rbWhite.setChecked(true);
+        }
+        else if (sortBy.equalsIgnoreCase("BLUE")) {
+            rbBlue.setChecked(true);
+        }
+        else {
+            rbPink.setChecked(true);
+        }
+
         RadioButton rbAscending = (RadioButton) findViewById(R.id.radioAscending);
         RadioButton rbDescending = (RadioButton) findViewById(R.id.radioDescending);
         if (sortOrder.equalsIgnoreCase("ASC")) {
@@ -112,7 +127,6 @@ public class ContactSettingsActivity extends AppCompatActivity {
         else {
             rbDescending.setChecked(true);
         }
-
     }
 
     private void initSortByClick() {
@@ -131,16 +145,16 @@ public class ContactSettingsActivity extends AppCompatActivity {
         else if (rbCity.isChecked()) {
          getSharedPreferences("MyContactListPreferences",
          Context.MODE_PRIVATE).edit()
-         .putString("sortfield", "birthday").apply();
+         .putString("sortfield", "city").apply();
         }
         else {
          getSharedPreferences("MyContactListPreferences",
          Context.MODE_PRIVATE).edit()
          .putString("sortfield", "birthay").apply();
          }
+                                                }
 
-         }
-         }
+        }
         );
     }
 
@@ -165,12 +179,11 @@ public class ContactSettingsActivity extends AppCompatActivity {
     }
 
     private void initBackgroundColor() {
-        RadioGroup rgBackgorund = (RadioGroup) findViewById(R.id.radioGroupBackgroundColors);
-        rgBackgorund.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        RadioGroup rgBackground = (RadioGroup) findViewById(R.id.radioGroupBackgroundColors);
+        rgBackground.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
         public void onCheckedChanged(RadioGroup arg0, int arg1) {
         RadioButton rbWhite = (RadioButton) findViewById(R.id.radioWhiteBackground);
         RadioButton rbBlue = (RadioButton) findViewById(R.id.radioBlueBackground);
-        RadioButton rbPink = (RadioButton) findViewById(R.id.radioPinkBackground);
         if (rbWhite.isChecked()) {
          getSharedPreferences("MyContactListPreferences",
          Context.MODE_PRIVATE).edit()
